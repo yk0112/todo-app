@@ -13,13 +13,12 @@ interface InputProps {
   placeholder?: string;
 }
 
-const Input: React.FC<InputProps> = ({
+const TextArea: React.FC<InputProps> = ({
   label,
   id,
   register,
   required,
   errors,
-  type = "text",
   disabled,
   placeholder = "",
 }) => {
@@ -37,9 +36,8 @@ const Input: React.FC<InputProps> = ({
         {label}
       </label>
       <div className="mt-2">
-        <input
+        <textarea
           id={id}
-          type={type}
           autoComplete={id}
           disabled={disabled}
           placeholder={placeholder}
@@ -48,6 +46,7 @@ const Input: React.FC<InputProps> = ({
             `
             form-input,
             w-full 
+	    h-28
             rounded-md 
             border-0
 	    px-1.5
@@ -60,7 +59,7 @@ const Input: React.FC<InputProps> = ({
             placeholder:text-gray-400 
             focus:ring-2 
             focus:ring-inset 
-            focus:ring-sky-500 
+            focus:ring-sky-500
             sm:text-sm 
             sm:leading-6`,
             errors[id] && "focus:ring-rose-500",
@@ -72,4 +71,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default TextArea;
