@@ -36,43 +36,52 @@ const AddTodo: React.FC<AddTodoProps> = ({ mutate }) => {
   };
 
   return (
-    <Modal
-      title="Create TODO"
-      open={true}
-      onOk={() => setOpen(false)}
-      onCancel={() => setOpen(false)}
-      width={500}
-      footer={null}
-    >
-      <form id="submit" onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          disabled={isLoading}
-          register={register}
-          errors={errors}
-          required={false}
-          id="title"
-          label="Todo"
-          placeholder="What shoild you do?"
-        />
-        <TextArea
-          disabled={isLoading}
-          register={register}
-          errors={errors}
-          required={false}
-          id="body"
-          label="Body"
-          placeholder="Write more detail..."
-        />
-        <div className="flex mt-6 gap-6 justify-end">
-          <Button disabled={isLoading} secondary onClick={() => setOpen(false)}>
-            キャンセル
-          </Button>
-          <Button disabled={isLoading} type="submit">
-            保存
-          </Button>
-        </div>
-      </form>
-    </Modal>
+    <div>
+      <Modal
+        title="Create TODO"
+        open={isOpen}
+        onOk={() => setOpen(false)}
+        onCancel={() => setOpen(false)}
+        width={500}
+        footer={null}
+      >
+        <form id="submit" onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            disabled={isLoading}
+            register={register}
+            errors={errors}
+            required={false}
+            id="title"
+            label="Todo"
+            placeholder="What shoild you do?"
+          />
+          <TextArea
+            disabled={isLoading}
+            register={register}
+            errors={errors}
+            required={false}
+            id="body"
+            label="Body"
+            placeholder="Write more detail..."
+          />
+          <div className="flex mt-6 gap-6 justify-end">
+            <Button
+              disabled={isLoading}
+              secondary
+              onClick={() => setOpen(false)}
+            >
+              キャンセル
+            </Button>
+            <Button disabled={isLoading} type="submit">
+              保存
+            </Button>
+          </div>
+        </form>
+      </Modal>
+      <Button fullwidth onClick={() => setOpen(true)}>
+        ADD TODO
+      </Button>
+    </div>
   );
 };
 
